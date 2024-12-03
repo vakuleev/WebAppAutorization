@@ -1,0 +1,61 @@
+﻿@page
+@model WebAppAutorization.Pages.H_Divisions.IndexModel
+
+@{
+    ViewData["Title"] = "Дивизионы (Подразделения )";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.H_Division[0].prefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_Division[0].name_division)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_Division[0].load_dttm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_Division[0].id_source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_Division[0].Delete)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.H_Division) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.prefix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name_division)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.load_dttm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delete)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id_division">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id_division">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id_division">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

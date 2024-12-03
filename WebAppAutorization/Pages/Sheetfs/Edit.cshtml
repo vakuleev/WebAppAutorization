@@ -1,0 +1,335 @@
+﻿@page 
+@model WebAppAutorization.Pages.Sheetfs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+
+<div class="row">
+    <div class="col-md-10">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Sheetf.Id" />
+            <input type="hidden" asp-for="Sheetf.Prodavec" />
+            <input type="hidden" asp-for="Sheetf.Pokupat" />
+            <input type="hidden" asp-for="Sheetf.ProductName" />
+            <input type="hidden" asp-for="Sheetf.ProductEdIzm" />
+            <input type="hidden" asp-for="Sheetf.ProductCount" />
+            <input type="hidden" asp-for="Sheetf.ProductTarif" />
+            <input type="hidden" asp-for="Sheetf.ProductStoim" />
+            <input type="hidden" asp-for="Sheetf.ProductNalog" />
+            <input type="hidden" asp-for="Sheetf.SumNalog" />
+            <input type="hidden" asp-for="Sheetf.SumProductNalog" />
+            <input type="hidden" asp-for="Sheetf.companyId" />
+            <input type="hidden" asp-for="Sheetf.DocType" />
+            <input type="hidden" asp-for="Sheetf.Delete" />
+            <input type="hidden" asp-for="Sheetf.ResType" />
+            <input type="hidden" asp-for="Sheetf.ResName" />
+            <input type="hidden" asp-for="Sheetf.CreateAt" />
+
+            @if (Model.Order != null)
+            {
+                @if (Model.Order.Count > 0)
+                {
+                    @foreach (var item in Model.Order)
+                    {
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].Id" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].sheetfId" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].ProductEdIzm" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].OverLimit" />
+
+                        @if (Model.Sheetf.ResName != "Газ")
+                        {
+                            <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].Calories" />
+                        }
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].ProductName" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].DocType" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].ProductNalog" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].Delete" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].ResType" />
+                        <input type="hidden" asp-for="Order[Model.Order.IndexOf(item)].ResName" />
+                    }
+                }
+            }
+            @if (Model.Sheetf.CreateAt != null)
+            {
+            <div class="row mb-1">
+                <div class="col-sm-3">
+                    <label asp-for="Sheetf.CreateAt" class="control-label"></label>
+                    @Html.DisplayFor(model => model.Sheetf.CreateAt)
+                    <span asp-validation-for="Sheetf.CreateAt" class="text-danger"></span>
+                </div>
+            </div>
+            }
+            <div class="row mb-1">
+                <div class="col-sm-3">
+                    <label asp-for="Sheetf.NumAct" class="control-label"></label>
+                    <input asp-for="Sheetf.NumAct" class="form-control" />
+                    <span asp-validation-for="Sheetf.NumAct" class="text-danger"></span>
+                </div>
+                <div class="col-sm-3">
+                    <label asp-for="Sheetf.DateAct" class="control-label"></label>
+                    <input asp-for="Sheetf.DateAct" class="form-control" />
+                    <span asp-validation-for="Sheetf.DateAct" class="text-danger"></span>
+                </div>
+                <div class="col-sm-2">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Sheetf.Approved" /> @Html.DisplayNameFor(model => model.Sheetf.Approved)
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                </div>
+                <div class="col-sm-1">
+                    <a class="btn btn-outline-primary" href="..\Sheetfs">Отмена</a>
+                </div>
+            </div>
+            <p></p>
+            <div class="row mb-1">
+                <div class="col-sm-6">
+                    <label asp-for="Sheetf.Prodavec" class="control-label"></label>
+                    <h6>
+                        <label></label>@Html.DisplayFor(model => model.Sheetf.Prodavec)
+                    </h6>
+                    <span asp-validation-for="Sheetf.Prodavec" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <label asp-for="Sheetf.Pokupat" class="control-label"></label>
+                    <h6>
+                        <label></label>@Html.DisplayFor(model => model.Sheetf.Pokupat)
+                    </h6>
+                    <span asp-validation-for="Sheetf.Pokupat" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-1">
+                 <div class="col-sm-10">
+                    <label asp-for="Sheetf.ProductName" class="control-label"></label>
+                    <h6>
+                        <label></label>@Html.DisplayFor(model => model.Sheetf.ProductName)
+                    </h6>
+                    <span asp-validation-for="Sheetf.ProductName" class="text-danger"></span>
+                </div>
+                <div class="col-sm-2">
+                    <label asp-for="Sheetf.ProductEdIzm" class="control-label"></label>
+                    <h6>
+                        <label></label>@Html.DisplayFor(model => model.Sheetf.ProductEdIzm)
+                    </h6>
+                    <span asp-validation-for="Sheetf.ProductEdIzm" class="text-danger"></span>
+                </div>
+            </div>
+
+            <p>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    <label asp-for="Sheetf.ResName" class="control-label"></label>
+                    <h6>
+                        <label></label>@Html.DisplayFor(model => model.Sheetf.ResName)
+                    </h6>
+                    <span asp-validation-for="Sheetf.ResName" class="text-danger"></span>
+                </div>
+            </p>
+            <div class="col-sm-2">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Sheetf.OverLimit" /> @Html.DisplayNameFor(model => model.Sheetf.OverLimit)
+                    @if (Model.Sheetf.OverLimit && Model.Sheetf.DocType == "Otladka")
+                    {
+                        <button type="submit" class="btn btn-success btn-sm" asp-page-handler="OrderRender" asp-route-id="@Model.Sheetf.Id">Render window</button>
+                    }
+                </label>
+            </div>
+
+            @if (Model.Sheetf.DocType == "Otladka")
+            {
+                <div class="row mb-1">
+                    <div class="col-sm-1">
+                    <label asp-for="Sheetf.ProductCount" class="control-label"></label>
+                    <label> : </label>
+                    @Html.DisplayFor(model => model.Sheetf.ProductCount)
+                        <span asp-validation-for="Sheetf.ProductCount" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.ProductTarif" class="control-label"></label>
+                        @Html.DisplayFor(model => model.Sheetf.ProductTarif)
+                        <span asp-validation-for="Sheetf.ProductTarif" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.ProductStoim" class="control-label"></label>
+                        @Html.DisplayFor(model => model.Sheetf.ProductStoim)
+                        <span asp-validation-for="Sheetf.ProductStoim" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-1">
+                        <label asp-for="Sheetf.ProductNalog" class="control-label"></label>
+                        <label> : </label>
+                        @Html.DisplayFor(model => model.Sheetf.ProductNalog)
+                        <span asp-validation-for="Sheetf.ProductNalog" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.SumNalog" class="control-label"></label>
+                        @Html.DisplayFor(model => model.Sheetf.SumNalog)
+                        <span asp-validation-for="Sheetf.SumNalog" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.SumProductNalog" class="control-label"></label>
+                        @Html.DisplayFor(model => model.Sheetf.SumProductNalog)
+                        <span asp-validation-for="Sheetf.SumProductNalog" class="text-danger"></span>
+                    </div>
+                </div>
+            }
+
+    </div>
+</div>
+
+<p></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductEdIzm)
+            </th>
+            @if (Model.Sheetf.ResName == "Газ")
+            {
+                @if (Model.Sheetf.DocType == "Otladka")
+                {
+                  <th>
+                       @Html.DisplayNameFor(model => model.Order[0].OverLimit)
+                  </th>
+                }
+                <th>
+                    @Html.DisplayNameFor(model => model.Order[0].Calories)
+                </th>
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductTarif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductStoim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductNalog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].SumNalog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].SumProductNalog)
+            </th>
+            @if (Model.Order.Count == 0)
+            {
+                <th>Выполнить</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Order) 
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductEdIzm)
+            </td>
+            @if (Model.Sheetf.ResName == "Газ")
+            {
+                @if (Model.Sheetf.DocType == "Otladka")
+                {
+                    <th>
+                           @Html.DisplayFor(model => item.OverLimit)
+                    </th>
+                }
+             <td>
+                 <div class="col-sm-12">
+                  <input asp-for="@Model.Order[@Model.Order.IndexOf(item)].Calories" class="form-control" />
+                  <span asp-validation-for="@Model.Order[@Model.Order.IndexOf(item)].Calories" class="text-danger"></span>
+               </div>
+            </td>
+            }
+            <td>
+               <div class="col-sm-12">
+                  <input asp-for="@Model.Order[@Model.Order.IndexOf(item)].ProductCount" class="form-control" />
+                  <span asp-validation-for="@Model.Order[@Model.Order.IndexOf(item)].ProductCount" class="text-danger"></span>
+               </div>
+            </td>
+            <td>
+               <div class="col-sm-12">
+                  <input asp-for="@Model.Order[@Model.Order.IndexOf(item)].ProductTarif" class="form-control" />
+                  <span asp-validation-for="@Model.Order[@Model.Order.IndexOf(item)].ProductTarif" class="text-danger"></span>
+               </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductStoim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductNalog)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumNalog)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumProductNalog)
+            </td>
+            @if (Model.Order.Count == 0) 
+            {
+                <td>
+                     <button type="submit" class="btn btn-success btn-sm" asp-page-handler="OrderSave" asp-route-id="@item.Id">расч.</button>
+                </td>
+            }
+        </tr>
+}
+            @foreach (var item in Model.OrderItog)
+            {
+                <tr>
+                    <td>
+                        Итого
+                    </td>
+
+                    @if (Model.Sheetf.ResName == "Газ")
+                    {
+                        @if (Model.Sheetf.DocType == "Otladka")
+                        {
+                            <td>
+                            </td>
+                        }
+                        <td>
+                        </td>
+                    }
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductStoim)
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SumNalog)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SumProductNalog)
+                    </td>
+                </tr>
+            }
+
+
+    </tbody>
+
+</table>
+
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

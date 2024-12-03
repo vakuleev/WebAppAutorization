@@ -1,0 +1,50 @@
+﻿@page
+@model WebAppAutorization.Pages.S_Factory_infos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>S_Factory_info</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.S_Factory_info.id_factory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.S_Factory_info.id_factory)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.S_Factory_info.description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.S_Factory_info.description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.S_Factory_info.adress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.S_Factory_info.adress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.S_Factory_info.id_source)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.S_Factory_info.id_source)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.S_Factory_info.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.S_Factory_info.Status)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.S_Factory_info?.load_dttm">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

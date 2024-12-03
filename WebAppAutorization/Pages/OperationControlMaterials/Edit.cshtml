@@ -1,0 +1,71 @@
+﻿@page
+@model WebAppAutorization.Pages.OperationControlMaterials.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>IzvestFromSilos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IzvestFromSilos.Id" />
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.DateTrial" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.DateTrial" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.DateTrial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.TimeTrial" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.TimeTrial" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.TimeTrial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.Enthalpiy" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.Enthalpiy" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.Enthalpiy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.Activity" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.Activity" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.Activity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.Time" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.Time" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.Temperature" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.Temperature" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.Temperature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.CreateAt" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.CreateAt" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.CreateAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IzvestFromSilos.userId" class="control-label"></label>
+                <input asp-for="IzvestFromSilos.userId" class="form-control" />
+                <span asp-validation-for="IzvestFromSilos.userId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

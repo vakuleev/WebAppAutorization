@@ -1,0 +1,217 @@
+﻿@page
+@using WebAppAutorization.Data.Identity
+@using WebAppAutorization.Data.Tables
+
+@inject SignInManager<User> SignInManager
+
+@model WebAppAutorization.Pages.Admins.IndexModel
+
+@{
+    ViewData["Title"] = "Admin page";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>Таблица</title>
+    <style>
+        table {
+            width: 100%; /* Ширина таблицы */
+            border-collapse: collapse; /* Убираем двойные линии между ячейками */
+            /*background: #afff92; /* Цвет фона таблицы */
+            /*color: #033; /* Цвет текста */
+            background: #fff; /* Цвет фона таблицы */
+            color: #000; /* Цвет текста */
+        }
+
+            table th {
+                height: 30px;
+                vertical-align: top; /* выравнивание по верхней границе ячейки */
+                text-align: center; /* выравнивание по центру*/
+            }
+
+            table td {
+                height: 30px;
+                vertical-align: top; /* выравнивание по верхней границе ячейки */
+                text-align: center; /* выравнивание по центру*/
+            }
+
+        td, th {
+            padding: 3px; /* Поля вокруг содержимого таблицы */
+            border: 1px solid #000; /* Параметры рамки */
+            background: #afff92; /* Цвет фона */
+            color: #033; /* Цвет текста */
+        }
+
+        th {
+            background: #af0792; /* Цвет фона */
+            color: #333; /* Цвет текста */
+        }
+
+        tbody tr:hover {
+            /*background: #f3bd48; /* Цвет фона при наведении */
+            /*color: #fff;         /* Цвет текста при наведении */
+            background: #bfff; /* Цвет фона при наведении */
+            color: #000000; /* Цвет текста при наведении */
+        }
+        td {
+            background: #bfff; /* Цвет фона при наведении */
+            color: #000000; /* Цвет текста при наведении */
+        }
+    </style>
+</head>
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+        <h5>Список зарегистрированных пользователей:</h5>
+        <a type="submit" class="btn btn-outline-primary" asp-area="Identity" asp-page="/Account/Register">Регистрация нового аккаунта пользователя</a>
+        <form method="post" action="">
+            <input type="hidden" name="userId" value="@Model.UserId" />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Логин</th>
+                        <th>Вход</th>
+                        <th>Управление</th>
+                        <th>Права доступа</th>
+                        <th>Компании (подразделения)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model._userManager.Users)
+                    {
+                        @if (@Model.UserId == @item.Id)
+                        {
+                            /*<style>
+                                td {
+                                    background: #033; /* Цвет фона ячеек */
+                            /*        color: #afff92
+                                }
+                            </style>*/
+                        } else if (@Model.UserId != @item.Id)
+                        {
+                            /*<style>
+                                td {
+                                    background: #fff; /* Цвет фона ячеек */
+                            /*        color: #000
+                                }
+                            </style>*/
+                        }
+
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EmailConfirmed)</td>
+                            <td>
+                                @if (@item.EmailConfirmed)
+                                {
+                                    <button type="submit" class="btn btn-danger btn-sm" asp-page-handler="ConfirmedUser" asp-route-id="@item.Id">Запретить вход</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-success btn-sm" asp-page-handler="ConfirmedUser" asp-route-id="@item.Id">Разрешить вход</button>
+                                }
+                                <a class="btn btn-primary btn-sm" asp-page="./UserEdit" asp-route-id="@item.Id">Профиль</a>
+                                <a class="btn btn-danger btn-sm" asp-page="./UserDelete" asp-route-id="@item.Id">Удалить</a>
+                            </td>
+                            <td>
+                                @if (Model.UserId != @item.Id)
+                                {
+                                    <button type="submit" class="btn btn-success btn-sm" asp-page-handler="ListUserRoles" asp-route-id="@item.Id">Список</button>
+                                }
+                                @if (Model.UserId == @item.Id)
+                                {
+                                    <div class="form-group">
+                                        @foreach (IdentityRole role in Model.AllRoles)
+                                        {
+                                            <input type="checkbox" name="roles" value="@role.Name"
+                                            @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />
+                                            @role.Name <br />
+                                        }
+                                    </div>
+                                    @if (@Model.LogInUser.AdminKeyActive == "ListUserRoles")
+                                    {
+                                        <button type="submit" class="btn btn-primary" asp-page-handler="SaveUserRoles" asp-route-id="@Model.UserId">Сохранить</button>
+                                    } else
+                                    {
+                                        <button type="submit" class="btn btn-success btn-sm" asp-page-handler="ListUserRoles" asp-route-id="@item.Id">Список</button>
+                                    }
+                                } 
+                            </td>
+                            <td>
+                                @if (Model.UserId != @item.Id)
+                                {
+                                    <button type="submit" class="btn btn-success btn-sm" asp-page-handler="ListUserCompanies" asp-route-id="@item.Id">Список</button>
+                                }
+                                @if (Model.UserId == @item.Id)
+                                {
+                                    <div class="form-group">
+                                        @foreach (Company company in Model.AllCompanies)
+                                        {
+                                            <input type="checkbox" name="companyChecked" value="@company.Name" 
+                                            @(Model.UserCompanies.Contains(company) ? "checked=\"checked\"" : "") />
+                                            @company.Name
+                                            <br />
+                                        }
+                                    </div>
+                                    @if (@Model.LogInUser.AdminKeyActive == "ListUserCompanies")
+                                    {
+                                        <button type="submit" class="btn btn-primary" asp-page-handler="SaveUserCompanies" asp-route-id="@Model.UserId">Сохранить</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-success btn-sm" asp-page-handler="ListUserCompanies" asp-route-id="@item.Id">Список</button>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <h5>Список страниц доступа (роли) в приложении:</h5>
+            <b>Страница доступа (роль) :</b>
+            <input type="text" name="RoleName" />
+            <button type="submit" class="btn btn-outline-primary" asp-page-handler="NewRole">Создание страницы доступа (роли)</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Страница доступа (роль)</th>
+                        <th>Нормализованная</th>
+                        <th>Управление</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model._roleManager.Roles.OrderBy(r => r.Name))
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NormalizedName)</td>
+                            <td>
+                                @if (@item.Name == "Admin" || @item.Name == "Manager" || @item.Name == "Operator")
+                                {
+                                    <label type="submit" >Встроенная роль</label>
+                                }
+                                @if (@item.Name != "Admin" && @item.Name != "Manager" && @item.Name != "Operator")
+                                {
+                                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+                                    @if (@item.Id == "Оставлено для примера MVC")
+                                    {
+                                        <button type="submit" class="btn btn-danger btn-sm" asp-page-handler="DelRole" asp-route-id="@item.Id">Удаление роли</button>
+                                    }
+                                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Удаление</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    }
+}
+else
+{
+    <span>Войдите в систему</span>
+}

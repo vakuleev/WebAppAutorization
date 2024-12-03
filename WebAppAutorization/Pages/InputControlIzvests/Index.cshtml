@@ -1,0 +1,102 @@
+﻿@page
+@model WebAppAutorization.Pages.InputControlIzvests.IndexModel
+
+@{
+    ViewData["Title"] = "ЦЭХ №3";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>Входной контроль извести</h3>
+
+<form method="post">
+    <div class="row mb-1">
+        <input type="hidden" asp-for="curUser.Id" />
+        <div class="col-sm-2">
+            <label asp-for="curUser.DateFiltrStart" class="control-label"></label>
+            <input asp-for="curUser.DateFiltrStart" class="form-control" />
+            <span asp-validation-for="curUser.DateFiltrStart" class="text-danger"></span>
+        </div>
+        <div class="col-sm-2">
+            <label asp-for="curUser.DateFiltrEnd" class="control-label"></label>
+            <input asp-for="curUser.DateFiltrEnd" class="form-control" />
+            <span asp-validation-for="curUser.DateFiltrEnd" class="text-danger"></span>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-outline-primary" asp-page-handler="ChangeGoFiltr" asp-route-Id="@Model.curUser.Id">Применить фильтр</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-outline-primary" asp-page-handler="ConvertToExcelClosedXML" asp-route-Id="@Model.curUser.Id">Конвертировать в Excel</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-14">
+
+        <div class="form-group">
+            <a type="submit" class="btn btn-outline-primary" asp-page="Create">Создать новую</a>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InputControlIzvests[0].DateReceipt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InputControlIzvests[0].UnquencheGrains)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InputControlIzvests[0].Activity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InputControlIzvests[0].WetBulkDensity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InputControlIzvests[0].ExtinguishingTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InputControlIzvests[0].ExtinguishingTemperature)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InputControlIzvests[0].UniformityVolumeChange)
+                    </th>
+                    <th>Выполнить</th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model.InputControlIzvests) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateReceipt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnquencheGrains)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WetBulkDensity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExtinguishingTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExtinguishingTemperature)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UniformityVolumeChange)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+                        <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+﻿@page
+@model WebAppAutorization.Pages.OperationControlMaterials.IndexModel
+
+@{
+    ViewData["Title"] = "ЦЭХ №3";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>Операционный контроль сырья для производства ячеистого бетона</h3>
+
+<hr />
+@if (@Model._messageString != null)
+{
+    <h3>@Model._messageString</h3>
+}
+
+<form method="post">
+    <div class="row mb-1">
+        <input type="hidden" asp-for="curUser.Id" />
+        <div class="col-sm-2">
+            <label asp-for="curUser.DateFiltrStart" class="control-label"></label>
+            <input asp-for="curUser.DateFiltrStart" class="form-control" />
+            <span asp-validation-for="curUser.DateFiltrStart" class="text-danger"></span>
+        </div>
+        <div class="col-sm-2">
+            <label asp-for="curUser.DateFiltrEnd" class="control-label"></label>
+            <input asp-for="curUser.DateFiltrEnd" class="form-control" />
+            <span asp-validation-for="curUser.DateFiltrEnd" class="text-danger"></span>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-outline-primary" asp-page-handler="ChangeGoFiltr" asp-route-Id="@Model.curUser.Id">Применить фильтр</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-outline-primary" asp-page-handler="ConvertToExcelClosedXML" asp-route-Id="@Model.curUser.Id">Конвертировать в Excel</button>
+        </div>
+        @if (@Model._messageString == "Otladka")
+        {
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-outline-primary" asp-page-handler="ConvertToExcelCOM" asp-route-Id="@Model.curUser.Id">Конвертировать в Excel COM</button>
+            </div>
+        }
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th headers="1" width="50" colspan="1" size="1" align="center">@Html.DisplayNameFor(model => model.OperationControls[0].DateTrial)</th>
+            <th headers="1" width="50" colspan="1" size="1" align="center">@Html.DisplayNameFor(model => model.OperationControls[0].TimeTrial)</th>
+            <th headers="1" width="50" colspan="4" size="1" align="center">Известь из силоса</th>
+            <th headers="1" width="50" colspan="4" size="1" align="center">Песчаный шлам в шламбассейнах</th>
+            <th headers="1" width="50" colspan="4" size="1" align="center">Песчаный шлам с мельницы</th>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <th>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].Enthalpiy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].Activity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].Temperature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].NumPool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].Density)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].ResidueOnSieve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].GypsumContentSandSlurry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].NumPoolM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].DensityM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].ResidueOnSieveM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperationControls[0].DensityReturnSludge)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.OperationControls)
+        {
+
+          <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTrial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeTrial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enthalpiy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumPool)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Density)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidueOnSieve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GypsumContentSandSlurry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumPoolM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DensityM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidueOnSieveM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DensityReturnSludge)
+            </td>
+          </tr>
+            @if (item.DateTimeTrial == Model.vDateTrial)
+            {
+
+            }
+            else
+            {
+                Model.vDateTrial = item.DateTimeTrial;
+                <tr></tr>
+            }
+
+        }
+    </tbody>
+</table>
+

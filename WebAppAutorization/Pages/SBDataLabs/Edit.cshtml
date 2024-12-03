@@ -1,0 +1,86 @@
+﻿@page
+@model WebAppAutorization.Pages.SBDataLabs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>SBDataLab</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SBDataLab.Id" />
+            <div class="form-group">
+                <label asp-for="SBDataLab.id_nameUser1" class="control-label"></label>
+                <input asp-for="SBDataLab.id_nameUser1" class="form-control" />
+                <span asp-validation-for="SBDataLab.id_nameUser1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.toniSandSlime" class="control-label"></label>
+                <input asp-for="SBDataLab.toniSandSlime" class="form-control" />
+                <span asp-validation-for="SBDataLab.toniSandSlime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.NGCementProc" class="control-label"></label>
+                <input asp-for="SBDataLab.NGCementProc" class="form-control" />
+                <span asp-validation-for="SBDataLab.NGCementProc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.toniCementProc" class="control-label"></label>
+                <input asp-for="SBDataLab.toniCementProc" class="form-control" />
+                <span asp-validation-for="SBDataLab.toniCementProc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.timeStartForceCement" class="control-label"></label>
+                <input asp-for="SBDataLab.timeStartForceCement" class="form-control" />
+                <span asp-validation-for="SBDataLab.timeStartForceCement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.timeEndForceCement" class="control-label"></label>
+                <input asp-for="SBDataLab.timeEndForceCement" class="form-control" />
+                <span asp-validation-for="SBDataLab.timeEndForceCement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.CreateAt1" class="control-label"></label>
+                @Html.DisplayFor(model => model.SBDataLab.CreateAt1)
+            <span asp-validation-for="SBDataLab.CreateAt1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.id_nameUser2" class="control-label"></label>
+                <input asp-for="SBDataLab.id_nameUser2" class="form-control" />
+                <span asp-validation-for="SBDataLab.id_nameUser2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.plotnSlimeInSB" class="control-label"></label>
+                <input asp-for="SBDataLab.plotnSlimeInSB" class="form-control" />
+                <span asp-validation-for="SBDataLab.plotnSlimeInSB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.procentGipsInSB" class="control-label"></label>
+                <input asp-for="SBDataLab.procentGipsInSB" class="form-control" />
+                <span asp-validation-for="SBDataLab.procentGipsInSB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SBDataLab.CreateAt2" class="control-label"></label>
+                @Html.DisplayFor(model => model.SBDataLab.CreateAt2)
+                <span asp-validation-for="SBDataLab.CreateAt2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

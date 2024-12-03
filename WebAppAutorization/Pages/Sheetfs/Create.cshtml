@@ -1,0 +1,136 @@
+﻿@page
+@model WebAppAutorization.Pages.Sheetfs.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+    <h1>Создание</h1>
+
+    <h4>Документ ЭР</h4>
+
+    <div class="row">
+        <div class="col-md-10">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Sheetf.CreateAt" />
+                <input type="hidden" asp-for="Sheetf.Delete" />
+                @if (Model.Sheetf.CreateAt != null)
+                {
+                    <div class="row mb-1">
+                        <div class="col-sm-3">
+                            <label asp-for="Sheetf.CreateAt" class="control-label"></label>
+                            @Html.DisplayFor(model => model.Sheetf.CreateAt)
+                            <span asp-validation-for="Sheetf.CreateAt" class="text-danger"></span>
+                        </div>
+                    </div>
+                }
+                <div class="row mb-1">
+                    <div class="col-sm-3">
+                        <label asp-for="Sheetf.NumAct" class="control-label"></label>
+                        <input asp-for="Sheetf.NumAct" class="form-control" />
+                        <span asp-validation-for="Sheetf.NumAct" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-3">
+                        <label asp-for="Sheetf.DateAct" class="control-label"></label>
+                        <input asp-for="Sheetf.DateAct" class="form-control" />
+                        <span asp-validation-for="Sheetf.DateAct" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Sheetf.Approved" /> @Html.DisplayNameFor(model => model.Sheetf.Approved)
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="submit" value="Сохранить" class="btn btn-primary" />
+                    </div>
+                    <div class="col-sm-1">
+                        <a class="btn btn-outline-primary" href="..\Sheetfs">Отмена</a>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-6">
+                        <label asp-for="Sheetf.Prodavec" class="control-label"></label>
+                        <select asp-for="Sheetf.Prodavec" class="form-control" asp-items="ViewBag.Prodavec"></select>
+                        <span asp-validation-for="Sheetf.Prodavec" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <label asp-for="Sheetf.Pokupat" class="control-label"></label>
+                        <select asp-for="Sheetf.Pokupat" class="form-control" asp-items="ViewBag.Pokupat"></select>
+                        <span asp-validation-for="Sheetf.Pokupat" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-10">
+                        <label asp-for="Sheetf.ProductName" class="control-label"></label>
+                        <select asp-for="Sheetf.ProductName" class="form-control" asp-items="ViewBag.ProductName"></select>
+                        <span asp-validation-for="Sheetf.ProductName" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.ProductEdIzm" class="control-label"></label>
+                        <select asp-for="Sheetf.ProductEdIzm" class="form-control" asp-items="ViewBag.ProductEdIzm"></select>
+                        <span asp-validation-for="Sheetf.ProductEdIzm" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.ProductCount" class="control-label"></label>
+                        <input asp-for="Sheetf.ProductCount" class="form-control" />
+                        <span asp-validation-for="Sheetf.ProductCount" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.ProductTarif" class="control-label"></label>
+                        <input asp-for="Sheetf.ProductTarif" class="form-control" />
+                        <span asp-validation-for="Sheetf.ProductTarif" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.ProductStoim" class="control-label"></label>
+                        <input asp-for="Sheetf.ProductStoim" class="form-control" />
+                        <span asp-validation-for="Sheetf.ProductStoim" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.ProductNalog" class="control-label"></label>
+                        <input asp-for="Sheetf.ProductNalog" class="form-control" />
+                        <span asp-validation-for="Sheetf.ProductNalog" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.SumNalog" class="control-label"></label>
+                        <input asp-for="Sheetf.SumNalog" class="form-control" />
+                        <span asp-validation-for="Sheetf.SumNalog" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <label asp-for="Sheetf.SumProductNalog" class="control-label"></label>
+                        <input asp-for="Sheetf.SumProductNalog" class="form-control" />
+                        <span asp-validation-for="Sheetf.SumProductNalog" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <label asp-for="Sheetf.DocType" class="control-label"></label>
+                    </div>
+                    <p>
+                        <div class="col-sm-1">
+                            <input asp-for="Sheetf.DocType" class="form-control" />
+                            <span asp-validation-for="Sheetf.DocType" class="text-danger"></span>
+                        </div>
+                    </p>
+                    <div class="col-sm-4">
+                        <label asp-for="Sheetf.ResName" class="control-label"></label>
+                    </div>
+                    <p>
+                        <div class="col-sm-4">
+                            <select asp-for="Sheetf.ResName" class="form-control" asp-items="ViewBag.ResName"></select>
+                            <span asp-validation-for="Sheetf.ResName" class="text-danger"></span>
+                        </div>
+                    </p>
+        </form>
+        </div>
+    </div>
+
+
+<div>
+    <a asp-page="Index">Вернуться в список</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

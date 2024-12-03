@@ -1,0 +1,71 @@
+﻿@page
+@model WebAppAutorization.Pages.SandSludgeMills.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверенны что хотите удалить это ?</h3>
+<div>
+    <h4>Песчаный шлам с мельницы</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.DateTrial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.DateTrial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.TimeTrial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.TimeTrial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.NumPool)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.NumPool)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.Density)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.Density)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.ResidueOnSieve)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.ResidueOnSieve)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.DensityReturnSludge)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.DensityReturnSludge)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.CreateAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.CreateAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SandSludgeMill.userId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SandSludgeMill.userId)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="SandSludgeMill.Id" />
+        <input type="submit" value="Удаление" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться к списку</a>
+    </form>
+</div>

@@ -1,0 +1,61 @@
+﻿@page
+@model WebAppAutorization.Pages.S_Factory_infos.IndexModel
+
+@{
+    ViewData["Title"] = "Доп.инфо компании (история изменения)";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.S_Factory_info[0].id_factory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S_Factory_info[0].description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S_Factory_info[0].adress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S_Factory_info[0].id_source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.S_Factory_info[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.S_Factory_info) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_factory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.load_dttm">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.load_dttm">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.load_dttm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

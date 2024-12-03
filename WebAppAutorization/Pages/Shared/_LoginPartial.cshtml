@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebAppAutorization.Data.Identity;
+@using WebAppAutorization.Data.Tables;
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav" style="float: right;">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="float: right;">Профиль : @User.Identity?.Name</a>
+    </li>
+    <li class="nav-item">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Выход</button>
+        </form>
+    </li>
+}
+ else
+{
+        @if (@User.Identity?.Name == "Данный участок отключен для безопасности администратора")
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+            </li>
+
+        }
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Войти</a>
+    </li>
+}
+</ul>

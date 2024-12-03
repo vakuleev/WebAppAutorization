@@ -1,0 +1,109 @@
+﻿@page
+@model WebAppAutorization.Pages.ResultsLimeMills.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Создание записи</h1>
+
+<a>Результаты испытаний молотой извести с мельницы</a>
+<hr />
+@if (@Model._foundDubl != null)
+{
+    <h3>Дубликат ! Будьте ВНИМАТЕЛЬНЫ - запись c такой датой время уже есть !</h3>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.DateTrial" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.DateTrial" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.DateTrial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.TimeTrial" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.TimeTrial" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.TimeTrial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.Agent" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.Agent" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.Agent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.DateLimeOnManufakt" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.DateLimeOnManufakt" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.DateLimeOnManufakt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.Sito200" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.Sito200" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.Sito200" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.Sito80" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.Sito80" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.Sito80" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.ActiveLime" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.ActiveLime" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.ActiveLime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.Entalpya" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.Entalpya" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.Entalpya" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.SandProc" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.SandProc" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.SandProc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.LimeMn" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.LimeMn" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.LimeMn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.SandMn" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.SandMn" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.SandMn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.LimeMnK" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.LimeMnK" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.LimeMnK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsLimeMill.SandMnK" class="control-label"></label>
+                <input asp-for="ResultsLimeMill.SandMnK" class="form-control" />
+                <span asp-validation-for="ResultsLimeMill.SandMnK" class="text-danger"></span>
+            </div>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ResultsLimeMill.CreateAt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ResultsLimeMill.CreateAt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ResultsLimeMill.userId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ResultsLimeMill.userId)
+            </dd>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" /> |
+                <a asp-page="./Index">Вернуться к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

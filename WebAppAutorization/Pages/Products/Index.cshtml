@@ -1,0 +1,43 @@
+﻿@page
+@model WebAppAutorization.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Продукт строки";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+   <a class="btn btn-primary btn-sm" asp-page="Create">Создать новую</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].EdIzm)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Product) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EdIzm)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+                <a class="btn btn-success btn-sm"  asp-page="./Details" asp-route-id="@item.Id" role="button">Детали</a>
+                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

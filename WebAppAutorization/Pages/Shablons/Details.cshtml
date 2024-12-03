@@ -1,0 +1,104 @@
+﻿@page
+@model WebAppAutorization.Pages.Shablons.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Детализация</h1>
+
+<div>
+    <h4>Шаблон ЭР</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.Prodavec)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.Prodavec)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.Pokupat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.Pokupat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.NumAct)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.NumAct)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.DateAct)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.DateAct)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.ProductName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.ProductName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.ProductEdIzm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.ProductEdIzm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.ProductCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.ProductCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.ProductTarif)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.ProductTarif)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.ProductStoim)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.ProductStoim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.ProductNalog)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.ProductNalog)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.SumNalog)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.SumNalog)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.SumProductNalog)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.SumProductNalog)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.Approved)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.Approved)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sheetf.CreateAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sheetf.CreateAt)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Sheetf?.Id">Edit</a> |
+    <a asp-page="./Index">Вернуться к спискуt</a>
+</div>

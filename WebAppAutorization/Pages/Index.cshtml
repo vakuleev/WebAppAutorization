@@ -1,0 +1,27 @@
+﻿@page
+@using WebAppAutorization.Data.Identity
+
+@inject SignInManager<User> SignInManager
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <span>Вход выполнен: @User.Identity?.Name</span>
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+        <h7>Приветствуем вас, вам назначена роль Admin, ваш статус - Администратор !</h7>
+    }
+    <br />
+    <form method="post" action="">
+
+    </form>
+}
+else
+{
+    <span>Войдите в систему</span>
+}

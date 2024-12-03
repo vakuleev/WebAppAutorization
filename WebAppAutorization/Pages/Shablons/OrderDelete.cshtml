@@ -1,0 +1,89 @@
+﻿@page
+@model WebAppAutorization.Pages.Shablons.OrderDeleteModel
+
+@{
+    ViewData["Title"] = "OrderDelete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Удаление записи</h1>
+
+<h3>Вы уверены, что хотите удалить это?</h3>
+<div>
+    <h4>Строка</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.ProductName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.ProductName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.ResType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.ResType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.ProductEdIzm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.ProductEdIzm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.Calories)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.Calories)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.ProductCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.ProductCount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.ProductTarif)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.ProductTarif)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.ProductStoim)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.ProductStoim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.ProductNalog)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.ProductNalog)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.SumNalog)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.SumNalog)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.SumProductNalog)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.SumProductNalog)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.sheetfId)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayFor(model => model.Order.sheetfId)
+        </dt>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Order.Id" />
+        <input type="submit" value="Удаление" class="btn btn-danger" /> |
+        <a asp-page="/Shablons/Edit" asp-route-id="@Model.Order?.sheetfId">Вернуться к списку</a>
+    </form>
+</div>

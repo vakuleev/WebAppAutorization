@@ -1,0 +1,53 @@
+﻿@page
+@model WebAppAutorization.Pages.CompanyUsers.IndexModel
+
+@{
+    ViewData["Title"] = "CompanyUsers page";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h5>Компании и подразделения пользователя</h5>
+
+<p>
+    <a asp-page="Create">Создать новую</a>
+</p>
+<form method="post" action="">
+   <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company[0].Name)
+                </th>
+                <th>
+                    Управление
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Company)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @if (@Model.curUser.CurrentCompanyId == 0)
+                        {
+                            <button type="submit" class="btn btn-success btn-sm" asp-page-handler="SelectCompany" asp-route-id="@item.Id">Выбрать для формирования документов</button>
+                        }
+                        else if (@Model.curUser.CurrentCompanyId == @item.Id)
+                        {
+                            <button type="submit" class="btn btn-primary" asp-page-handler="DeSelectCompany" asp-route-id="@item.Id">-> выбрана для формирования документов</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-success btn-sm" asp-page-handler="SelectCompany" asp-route-id="@item.Id">Выбрать</button>
+                        }
+                        <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+                        <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

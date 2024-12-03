@@ -1,0 +1,50 @@
+﻿@page
+@model WebAppAutorization.Pages.H_Divisions.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>H_Division</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.H_Division.prefix)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.H_Division.prefix)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.H_Division.name_division)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.H_Division.name_division)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.H_Division.load_dttm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.H_Division.load_dttm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.H_Division.id_source)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.H_Division.id_source)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.H_Division.Delete)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.H_Division.Delete)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.H_Division?.id_division">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

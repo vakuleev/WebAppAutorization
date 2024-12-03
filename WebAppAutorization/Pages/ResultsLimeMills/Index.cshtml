@@ -1,0 +1,137 @@
+﻿@page
+@model WebAppAutorization.Pages.ResultsLimeMills.IndexModel
+
+@{
+    ViewData["Title"] = "ЦЭХ №3";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>Результаты испытаний молотой извести с мельницы</h3>
+
+<form method="post">
+    <div class="row mb-1">
+        <input type="hidden" asp-for="curUser.Id" />
+        <div class="col-sm-2">
+            <label asp-for="curUser.DateFiltrStart" class="control-label"></label>
+            <input asp-for="curUser.DateFiltrStart" class="form-control" />
+            <span asp-validation-for="curUser.DateFiltrStart" class="text-danger"></span>
+        </div>
+        <div class="col-sm-2">
+            <label asp-for="curUser.DateFiltrEnd" class="control-label"></label>
+            <input asp-for="curUser.DateFiltrEnd" class="form-control" />
+            <span asp-validation-for="curUser.DateFiltrEnd" class="text-danger"></span>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-outline-primary" asp-page-handler="ChangeGoFiltr" asp-route-Id="@Model.curUser.Id">Применить фильтр</button>
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-outline-primary" asp-page-handler="ConvertToExcelClosedXML" asp-route-Id="@Model.curUser.Id">Конвертировать в Excel</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-14">
+
+<div class="form-group">
+    <a type="submit" class="btn btn-outline-primary" asp-page="Create">Создать новую</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].DateTrial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].TimeTrial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].Agent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].DateLimeOnManufakt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].Sito200)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].Sito80)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].ActiveLime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].Entalpya)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].SandProc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].LimeMn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].SandMn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].LimeMnK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResultsLimeMills[0].SandMnK)
+            </th>
+            <th>Выполнить</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ResultsLimeMills) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTrial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeTrial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateLimeOnManufakt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sito200)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sito80)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveLime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Entalpya)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SandProc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LimeMn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SandMn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LimeMnK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SandMnK)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </div>
+</div>

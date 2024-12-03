@@ -1,0 +1,110 @@
+﻿@page
+@model WebAppAutorization.Pages.ResultsLimeMills.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ResultsLimeMill</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.DateTrial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.DateTrial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.TimeTrial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.TimeTrial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.Agent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.Agent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.DateLimeOnManufakt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.DateLimeOnManufakt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.Sito200)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.Sito200)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.Sito80)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.Sito80)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.ActiveLime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.ActiveLime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.Entalpya)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.Entalpya)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.SandProc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.SandProc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.LimeMn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.LimeMn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.SandMn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.SandMn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.LimeMnK)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.LimeMnK)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.SandMnK)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.SandMnK)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.CreateAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.CreateAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsLimeMill.userId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsLimeMill.userId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ResultsLimeMill?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

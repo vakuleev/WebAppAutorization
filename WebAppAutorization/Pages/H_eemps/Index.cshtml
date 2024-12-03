@@ -1,0 +1,73 @@
+﻿@page
+@model WebAppAutorization.Pages.H_eemps.IndexModel
+
+@{
+    ViewData["Title"] = "Измерительные системы (датчики)";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].prefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].name_point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].load_dttm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].id_source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].id_parent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].virtual_counter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].Delete)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.H_eemp) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.prefix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name_point)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.load_dttm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_parent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.virtual_counter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delete)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.id_eemp">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.id_eemp">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.id_eemp">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

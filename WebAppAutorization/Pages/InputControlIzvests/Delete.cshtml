@@ -1,0 +1,77 @@
+﻿@page
+@model WebAppAutorization.Pages.InputControlIzvests.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверенны что хотите удалить это ?</h3>
+<div>
+    <h4>Входной контроль извести</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.DateReceipt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.DateReceipt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.UnquencheGrains)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.UnquencheGrains)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.Activity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.Activity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.WetBulkDensity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.WetBulkDensity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.ExtinguishingTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.ExtinguishingTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.ExtinguishingTemperature)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.ExtinguishingTemperature)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.UniformityVolumeChange)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.UniformityVolumeChange)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.CreateAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.CreateAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InputControlIzvest.userId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InputControlIzvest.userId)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="InputControlIzvest.Id" />
+        <input type="submit" value="Удаление" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться к списку</a>
+    </form>
+</div>

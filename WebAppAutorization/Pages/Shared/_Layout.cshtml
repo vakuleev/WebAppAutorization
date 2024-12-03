@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web приложение ООО Открытые Системы</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAppAutorization.styles.css" asp-append-version="true" />
+</head>
+<partial name="_LoginPartial" />
+
+<body style="background: #fff; color: #000;">
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-white border-bottom box-shadow mb-3" style="
+            width: 300px;
+            float: left; forced-color-adjust : auto;">
+        <div class="container" style="width: 100%; overflow: unset; HEIGHT: 100%; align-items: flex-start;">
+            @if (User.IsInRole("Отладка"))
+            {
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Корпоративное приложение style ="height: 1200px;"</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">АО-ГНС</span>
+                </button>
+            }
+            
+            <div class="navbar-dark d-sm-inline-flex" >
+                <ul class="navbar-nav flex-grow-1" style="display: flex;flex-direction: column;margin-top: 0px;">
+                        @if (User.IsInRole("Отладка"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Operator") || User.IsInRole("Документы ЭР"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Sheetfs/Index">Документы ЭР</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Operator") || User.IsInRole("Ордера"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Orders/IndexOrder">Ордера</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Ресурсы"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Resources/Index">Ресурсы</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Продукт"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Products/Index">Продукт</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Шаблоны"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Shablons/Index">Шаблоны</a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Otladka") && User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Операционный контроль"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/SBDataLabs/Index">Операционный контроль</a>
+                            </li>
+                        }
+                        
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Входной контроль песка"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/InputControlSands/Index">Входной контроль песка</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Входной контроль извести"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/InputControlIzvests/Index">Входной контроль извести</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Результаты испытаний молотой извести с мельницы"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ResultsLimeMills/Index">Результаты испытаний молотой извести с мельницы</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Результаты испытаний портландцемента"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ResultsPortlandCements/Index">Результаты испытаний портландцемента</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Известь из силоса"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/IzvestFromSiloss/Index">Известь из силоса</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Песчаный шлам в шламбассейнах"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/SandSludgePools/Index">Песчаный шлам в шламбассейнах</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Песчаный шлам с мельницы"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/SandSludgeMills/Index">Песчаный шлам с мельницы</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Операционный контроль сырья"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/OperationControlMaterials/Index">Операционный контроль сырья</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Пользователь-Компании"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/CompanyUsers/Index">Пользователь-Компании</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Компании"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Companies/Index">Компании</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Агенты"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Agents/Index">Агенты</a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("ХАБ Фабрики"))
+                        {
+                            <li class="nav-item">
+                               <a class="nav-link text-dark" asp-area="" asp-page="/H_Factorys/Index">ХАБ Фабрики</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("ХАБ Дивизионы"))
+                        {
+                            <li class="nav-item">
+                                  <a class="nav-link text-dark" asp-area="" asp-page="/H_Divisions/Index">ХАБ Дивизионы</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("ХАБ Объекты"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/H_objects/Index">ХАБ Объекты</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("ХАБ Метрологии"))
+                        {
+                            <li class="nav-item">
+                                 <a class="nav-link text-dark" asp-area="" asp-page="/H_eemps/Index">ХАБ Метрологии</a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Доп инфо компании"))
+                        {
+                            <li class="nav-item">
+                               <a class="nav-link text-dark" asp-area="" asp-page="/S_Factory_infos/Index">Доп инфо компании</a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Admins/Index">Администратор</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Web приложение ООО Открытые Системы с аутоидентификацией - <a asp-area="" asp-page="/Privacy">Разработчики</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿@page
+@model WebAppAutorization.Pages.ResultsPortlandCements.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>Редактирование записи </h3>
+<a>Результат испытаний портландцемента</a>
+<hr />
+@if (@Model._foundDubl != null)
+{
+    <h3>Дубликат ! Будьте ВНИМАТЕЛЬНЫ - запись c такой датой уже есть !</h3>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="ResultsPortlandCement.CreateAt" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ResultsPortlandCement.Id" />
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.DateTrial" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.DateTrial" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.DateTrial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.Agent" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.Agent" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.Agent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.Sito90" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.Sito90" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.Sito90" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.CoeffWaterSepar" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.CoeffWaterSepar" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.CoeffWaterSepar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.SpecificSurface" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.SpecificSurface" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.SpecificSurface" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.NormDensityCementPaste" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.NormDensityCementPaste" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.NormDensityCementPaste" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.BeginCementSet" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.BeginCementSet" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.BeginCementSet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResultsPortlandCement.EndCementSet" class="control-label"></label>
+                <input asp-for="ResultsPortlandCement.EndCementSet" class="form-control" />
+                <span asp-validation-for="ResultsPortlandCement.EndCementSet" class="text-danger"></span>
+            </div>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ResultsPortlandCement.CreateAt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ResultsPortlandCement.CreateAt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ResultsPortlandCement.userId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ResultsPortlandCement.userId)
+            </dd>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" /> |
+                <a asp-page="./Index">Вернуться к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

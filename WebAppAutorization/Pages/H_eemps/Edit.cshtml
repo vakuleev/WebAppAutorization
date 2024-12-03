@@ -1,0 +1,77 @@
+﻿@page
+@model WebAppAutorization.Pages.H_eemps.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>H_eemp</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="H_eemp.id_eemp" />
+            <div class="form-group">
+                <label asp-for="H_eemp.prefix" class="control-label"></label>
+                <input asp-for="H_eemp.prefix" class="form-control" />
+                <span asp-validation-for="H_eemp.prefix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_eemp.name_point" class="control-label"></label>
+                <input asp-for="H_eemp.name_point" class="form-control" />
+                <span asp-validation-for="H_eemp.name_point" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_eemp.load_dttm" class="control-label"></label>
+                <input asp-for="H_eemp.load_dttm" class="form-control" />
+                <span asp-validation-for="H_eemp.load_dttm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_eemp.id_source" class="control-label"></label>
+                <input asp-for="H_eemp.id_source" class="form-control" />
+                <span asp-validation-for="H_eemp.id_source" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_eemp.id_parent" class="control-label"></label>
+                <input asp-for="H_eemp.id_parent" class="form-control" />
+                <span asp-validation-for="H_eemp.id_parent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_eemp.virtual_counter" class="control-label"></label>
+                <input asp-for="H_eemp.virtual_counter" class="form-control" />
+                <span asp-validation-for="H_eemp.virtual_counter" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="H_eemp.Delete" /> @Html.DisplayNameFor(model => model.H_eemp.Delete)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<form>
+    @if (@Model.id_object_return != 0)
+    {
+        <div>
+            <a asp-page="/H_objects/Edit" asp-route-id="@Model.id_object_return" asp-route-id_division="@Model.id_division_return" asp-route-id_factory="@Model.id_factory_return">Вернуться в список (object->eemp)</a>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a asp-page="./Index">Back to List</a>
+        </div>
+    }
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

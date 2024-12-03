@@ -1,0 +1,71 @@
+﻿@page
+@model WebAppAutorization.Pages.IzvestFromSiloss.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверенны что хотите удалить это ?</h3>
+<div>
+    <h4>Известь из силоса</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.DateTrial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.DateTrial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.TimeTrial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.TimeTrial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.Enthalpiy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.Enthalpiy)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.Activity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.Activity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.Temperature)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.Temperature)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.CreateAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.CreateAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzvestFromSilos.userId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IzvestFromSilos.userId)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="IzvestFromSilos.Id" />
+        <input type="submit" value="Удаление" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться к списку</a>
+    </form>
+</div>

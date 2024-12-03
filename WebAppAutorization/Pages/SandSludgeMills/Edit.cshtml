@@ -1,0 +1,74 @@
+﻿@page
+@model WebAppAutorization.Pages.SandSludgeMills.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>Редактирование записи </h3>
+<a>Песчаный шлам с мельницы</a>
+<hr />
+@if (@Model._foundDubl != null)
+{
+    <h3>Дубликат ! Будьте ВНИМАТЕЛЬНЫ - запись c такой датой время и номер бассейна уже есть !</h3>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="SandSludgeMill.CreateAt" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SandSludgeMill.Id" />
+            <div class="form-group">
+                <label asp-for="SandSludgeMill.DateTrial" class="control-label"></label>
+                <input asp-for="SandSludgeMill.DateTrial" class="form-control" />
+                <span asp-validation-for="SandSludgeMill.DateTrial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SandSludgeMill.TimeTrial" class="control-label"></label>
+                <input asp-for="SandSludgeMill.TimeTrial" class="form-control" />
+                <span asp-validation-for="SandSludgeMill.TimeTrial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SandSludgeMill.NumPool" class="control-label"></label>
+                <input asp-for="SandSludgeMill.NumPool" class="form-control" />
+                <span asp-validation-for="SandSludgeMill.NumPool" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SandSludgeMill.Density" class="control-label"></label>
+                <input asp-for="SandSludgeMill.Density" class="form-control" />
+                <span asp-validation-for="SandSludgeMill.Density" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SandSludgeMill.ResidueOnSieve" class="control-label"></label>
+                <input asp-for="SandSludgeMill.ResidueOnSieve" class="form-control" />
+                <span asp-validation-for="SandSludgeMill.ResidueOnSieve" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SandSludgeMill.DensityReturnSludge" class="control-label"></label>
+                <input asp-for="SandSludgeMill.DensityReturnSludge" class="form-control" />
+                <span asp-validation-for="SandSludgeMill.DensityReturnSludge" class="text-danger"></span>
+            </div>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SandSludgeMill.CreateAt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SandSludgeMill.CreateAt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SandSludgeMill.userId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SandSludgeMill.userId)
+            </dd>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" /> |
+                <a asp-page="./Index">Вернуться к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

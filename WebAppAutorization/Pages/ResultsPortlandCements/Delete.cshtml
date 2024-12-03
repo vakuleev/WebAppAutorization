@@ -1,0 +1,83 @@
+﻿@page
+@model WebAppAutorization.Pages.ResultsPortlandCements.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверенны что хотите удалить это ?</h3>
+<div>
+    <h4>Результат испытаний портландцемента</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.DateTrial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.DateTrial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.Agent)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.Agent)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.Sito90)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.Sito90)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.CoeffWaterSepar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.CoeffWaterSepar)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.SpecificSurface)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.SpecificSurface)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.NormDensityCementPaste)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.NormDensityCementPaste)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.BeginCementSet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.BeginCementSet)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.EndCementSet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.EndCementSet)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.CreateAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.CreateAt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResultsPortlandCement.userId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResultsPortlandCement.userId)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="ResultsPortlandCement.Id" />
+        <input type="submit" value="Удаление" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться к списку</a>
+    </form>
+</div>

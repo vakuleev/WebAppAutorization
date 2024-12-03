@@ -1,0 +1,41 @@
+﻿@page
+@model WebAppAutorization.Pages.Admins.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверены, что хотите удалить это?</h3>
+<div>
+    <h4>Страница доступа (роль) приложения:</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeleteRole.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeleteRole.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeleteRole.NormalizedName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeleteRole.NormalizedName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeleteRole.ConcurrencyStamp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeleteRole.ConcurrencyStamp)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="DeleteRole.Id" />
+        <input type="submit" value="Удаление" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться в список</a>
+    </form>
+</div>

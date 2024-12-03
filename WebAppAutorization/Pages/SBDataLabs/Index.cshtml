@@ -1,0 +1,97 @@
+﻿@page
+@model WebAppAutorization.Pages.SBDataLabs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].id_nameUser1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].toniSandSlime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].NGCementProc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].toniCementProc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].timeStartForceCement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].timeEndForceCement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].CreateAt1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].id_nameUser2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].plotnSlimeInSB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].procentGipsInSB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SBDataLab[0].CreateAt2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SBDataLab) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_nameUser1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.toniSandSlime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGCementProc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.toniCementProc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timeStartForceCement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.timeEndForceCement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateAt1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_nameUser2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.plotnSlimeInSB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.procentGipsInSB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateAt2)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,86 @@
+﻿@page
+@model WebAppAutorization.Pages.Orders.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h6>Ордера</h6>
+
+<p>
+    <a class="btn btn-primary btn-sm" asp-page="CreateOrder">Создать новую</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductEdIzm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductTarif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductStoim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ProductNalog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].SumNalog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].SumProductNalog)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].sheetfId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Order) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductEdIzm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductTarif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductStoim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductNalog)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumNalog)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SumProductNalog)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sheetfId)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" asp-page="./EditOrder" asp-route-id="@item.Id">Редактировать</a>
+                <a class="btn btn-success btn-sm"  asp-page="./DetailsOrder" asp-route-id="@item.Id" role="button">Детали</a>
+                <a class="btn btn-danger btn-sm" asp-page="./DeleteOrder" asp-route-id="@item.Id">Удалить</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

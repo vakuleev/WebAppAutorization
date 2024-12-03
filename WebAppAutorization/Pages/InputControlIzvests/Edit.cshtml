@@ -1,0 +1,80 @@
+﻿@page
+@model WebAppAutorization.Pages.InputControlIzvests.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>Редактирование записи </h3>
+
+<h4>Входной контроль извести</h4>
+<hr />
+@if (@Model._foundDubl != null)
+{
+       <h3>Дубликат ! Будьте ВНИМАТЕЛЬНЫ - запись c такой датой уже есть !</h3>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InputControlIzvest.Id" />
+            <input type="hidden" asp-for="InputControlIzvest.CreateAt" />
+            <div class="form-group">
+                <label asp-for="InputControlIzvest.DateReceipt" class="control-label"></label>
+                <input asp-for="InputControlIzvest.DateReceipt" class="form-control" />
+                <span asp-validation-for="InputControlIzvest.DateReceipt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputControlIzvest.UnquencheGrains" class="control-label"></label>
+                <input asp-for="InputControlIzvest.UnquencheGrains" class="form-control" />
+                <span asp-validation-for="InputControlIzvest.UnquencheGrains" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputControlIzvest.Activity" class="control-label"></label>
+                <input asp-for="InputControlIzvest.Activity" class="form-control" />
+                <span asp-validation-for="InputControlIzvest.Activity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputControlIzvest.WetBulkDensity" class="control-label"></label>
+                <input asp-for="InputControlIzvest.WetBulkDensity" class="form-control" />
+                <span asp-validation-for="InputControlIzvest.WetBulkDensity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputControlIzvest.ExtinguishingTime" class="control-label"></label>
+                <input asp-for="InputControlIzvest.ExtinguishingTime" class="form-control" />
+                <span asp-validation-for="InputControlIzvest.ExtinguishingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputControlIzvest.ExtinguishingTemperature" class="control-label"></label>
+                <input asp-for="InputControlIzvest.ExtinguishingTemperature" class="form-control" />
+                <span asp-validation-for="InputControlIzvest.ExtinguishingTemperature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputControlIzvest.UniformityVolumeChange" class="control-label"></label>
+                <input asp-for="InputControlIzvest.UniformityVolumeChange" class="form-control" />
+                <span asp-validation-for="InputControlIzvest.UniformityVolumeChange" class="text-danger"></span>
+            </div>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.InputControlIzvest.CreateAt)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.InputControlIzvest.CreateAt)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.InputControlIzvest.userId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.InputControlIzvest.userId)
+            </dd>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />|
+                <a asp-page="./Index">Вернуться к списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

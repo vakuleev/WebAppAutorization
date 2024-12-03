@@ -1,0 +1,222 @@
+﻿@page
+@model WebAppAutorization.Pages.Shablons.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h5>Шаблоны ЭР</h5>
+
+@if (@Model.curCompany != null)
+{
+    <h5>Компания для ввода документов-шаблонов: @Model.curCompany.Name</h5>
+}
+else
+{
+    <h5>Компания для ввода документов-шаблонов: - не выбрана компания !</h5>
+}
+
+@if (@Model.Company.Count > 1)
+{
+    <form method="post" action="">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Company[0].Name)
+                    </th>
+                    <th>
+                        Управление
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Company)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @if (@Model.curUser.CurrentCompanyId == 0)
+                            {
+                                <button type="submit" class="btn btn-success btn-sm" asp-page-handler="SelectCompany" asp-route-id="@item.Id">Выбрать для формирования документов</button>
+                            }
+                            else if (@Model.curUser.CurrentCompanyId == @item.Id)
+                            {
+                                <button type="submit" class="btn btn-primary" asp-page-handler="DeSelectCompany" asp-route-id="@item.Id">-> выбрана для формирования документов</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-success btn-sm" asp-page-handler="SelectCompany" asp-route-id="@item.Id">Выбрать</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+}
+
+
+@if (@Model.Shablon.Count > 0 && @Model.curCompany != null)
+{
+    <h5>Шаблоны: </h5>
+}
+else
+{
+    if (@Model.Shablon.Count == 0)
+    {
+        if (@Model.curCompany != null)
+        {
+            <h5>@Model.curCompany.Name - нет шаблонов !</h5>
+        }
+    }
+}
+
+    @if (@Model.Shablon.Count > 0 && @Model.curCompany != null && Model.curUser.AdminKeyActive == "Здесь данный участок избыточен так как только шаблоны загружены")
+    {
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Shablon[0].Prodavec)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Shablon[0].ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Shablon[0].ProductEdIzm)
+                        </th>
+                        <th>Управление</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Shablon)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Prodavec)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductEdIzm)
+                            </td>
+                            <td>
+                            <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-shablonId="@item.Id">Создать по выбранному шаблону </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    }
+
+    @if (@Model.Company.Count > 0 && @Model.curCompany != null)
+    {
+    <form method="post" action="">
+        <p>
+           <a class="btn btn-primary btn-sm" asp-page="Create">Создать новый шаблон</a>  
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].Prodavec)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].NumAct)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].DateAct)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].ProductEdIzm)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].ProductCount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].ProductTarif)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].SumNalog)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].SumProductNalog)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].CreateAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sheetf[0].Delete)
+                    </th>
+                    <th>Управление</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.Sheetf) 
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prodavec)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumAct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductEdIzm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductTarif)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SumNalog)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SumProductNalog)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Delete)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+                            @if (!item.Delete)
+                            {
+                                @if (item.Delete)
+                                {
+                                    <a class="btn btn-success btn-sm" asp-page="./Details" asp-route-id="@item.Id" role="button">Детали</a>
+                                }
+                                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
+                            } else
+                            {
+                                <a class="btn btn-success btn-sm" asp-page="./Delete" asp-route-id="@item.Id">Восстановить</a>
+                            }
+                        </td>
+                </tr>
+             }
+            </tbody>
+        </table>
+        </form>
+
+    }

@@ -1,0 +1,138 @@
+﻿@page
+@model WebAppAutorization.Pages.H_objects.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>H_object</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="H_object.id_object" />
+            <div class="form-group">
+                <label asp-for="H_object.prefix" class="control-label"></label>
+                <input asp-for="H_object.prefix" class="form-control" />
+                <span asp-validation-for="H_object.prefix" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_object.name_object" class="control-label"></label>
+                <input asp-for="H_object.name_object" class="form-control" />
+                <span asp-validation-for="H_object.name_object" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_object.load_dttm" class="control-label"></label>
+                <input asp-for="H_object.load_dttm" class="form-control" />
+                <span asp-validation-for="H_object.load_dttm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H_object.id_source" class="control-label"></label>
+                <input asp-for="H_object.id_source" class="form-control" />
+                <span asp-validation-for="H_object.id_source" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="H_object.Delete" /> @Html.DisplayNameFor(model => model.H_object.Delete)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div class="row mb-1">
+                <div class="col-sm-10">
+                    <label asp-for="EempAdd.name_point" class="control-label">Создать</label>
+                    <input asp-for="EempAdd.name_point" class="form-control">
+                    @if (@Model.H_object.id_source == null)
+                    {
+                        <select asp-for="EempAdd.name_point" class="form-control" asp-items="ViewBag.name_object"></select>
+                    }
+                    <span asp-validation-for="EempAdd.name_point" class="text-danger"></span>
+                </div>
+                <div class="col-sm-2">
+                    <label class="control-label"></label>
+                    <button type="submit" class="btn btn-outline-primary" asp-page-handler="ObjectAddEemp" asp-route-id_object=@Model.H_object.id_object>Добавить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<p>
+    @if (@Model._foundDubl != null)
+    {
+        <h6>Дубликат ! Будьте ВНИМАТЕЛЬНЫ - запись c {@Model._foundDubl.name_point} уже есть !</h6>
+    }
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].name_point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].load_dttm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].id_source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.H_eemp[0].Delete)
+            </th>
+            <th>Выполнить</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.H_eemp)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name_point)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.load_dttm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_source)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Delete)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-page="/H_eemps/Edit" 
+                    asp-route-id="@item.id_eemp" 
+                    asp-route-id_object="@Model.H_object.id_object" 
+                    asp-route-id_division="@Model.id_division_return" 
+                    asp-route-id_factory="@Model.id_factory_return">Редактировать</a>
+                    <a class="btn btn-outline-danger" asp-page="/H_eemps/Delete" asp-route-id="@item.id_eemp">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<form>
+    @if (@Model.id_division_return != 0)
+    {
+        <div>
+            <a asp-page="/H_Divisions/Edit" asp-route-id="@Model.id_division_return" asp-route-id_factory="@Model.id_factory_return">Вернуться в список (division->object)</a>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a asp-page="./Index">Back to List</a>
+        </div>
+    }
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
